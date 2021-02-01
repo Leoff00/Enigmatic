@@ -6,7 +6,9 @@ com perguntas e respostas. Até então só esta implementada a validação<br>
 das perguntas 😄 😄, mas em breve estarei implementando de pouco a pouco e atualizando o código! ✌️✌️ 
 <br>
 <br>
+  
 *Visite minhas redes sociais:*
+
 <br>
 https://linkedin.com/in/leonardo-ferreira-253a60173/
 <br>
