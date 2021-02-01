@@ -7,6 +7,7 @@ das perguntas 😄 😄, mas em breve estarei implementando de pouco a pouco e a
 <br>
 
 *Visite minhas redes sociais:*
+<br>
 https://linkedin.com/in/leonardo-ferreira-253a60173/
 <br>
 https://www.reddit.com/user/akaZinnlua
