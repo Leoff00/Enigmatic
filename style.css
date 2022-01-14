@@ -91,7 +91,7 @@ footer {
   margin: 8px auto;
 }
 
-button {
+.footerButtons {
   transition: 0.5s;
   width: 10%;
   height: 25px;
@@ -109,28 +109,6 @@ button {
   font-family: Arial;
 }
 
-.secondContainer {
-  position: relative;
-  top: 245px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.text1 {
-  transition: 0.5s;
-
-  font-size: 14px;
-  color: #808080;
-}
-
-.text2 {
-  transition: 0.5s;
-  font-size: 14px;
-  color: #708090;
-}
-
 .container:hover {
   transition: 0.5s;
   box-shadow: #000 4px 2px;
@@ -140,18 +118,5 @@ button {
 
 .txtInput:focus {
   outline: none;
-  max-width: 400px;
-  height: 18px;
-  font-size: 15px;
-  border: 1.7px solid black;
-}
-
-#btn:focus {
-  border: 1px solid #000;
-  outline: none;
-  max-width: 200px;
-  height: 28px;
-  font-size: 15px;
-  color: #000;
-  background-color: #fff;
+  font-size: 16px;
 }
