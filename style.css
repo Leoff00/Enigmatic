@@ -1,169 +1,122 @@
 @charset 'UTF-8';
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap");
 
 * {
-    font-family: 'Roboto slab';
+  font-family: "Roboto slab";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    transition: 0.5s;
-    box-shadow: #000 4px 2px;
-    text-align: center;
-    margin: auto;
-    background-color: #7B68EE;
-    max-width: 65%;
-    height: 180px;
-    border: 1.8px solid #000;
+  transition: 0.5s;
+  box-shadow: #000 4px 2px;
+  text-align: center;
+  margin: 8px auto;
+  background-color: #7b68ee;
+  width: 55%;
+  border: 1.8px solid #000;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 .title {
-    box-shadow: #000 0px 2px 0px 1px;
-    max-width: 220px;
-    height: 70px;
-    border: 2px solid #000;
-    border-radius: 5px;
-    font-size: 25px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+  box-shadow: #000 0px 2px 0px 1px;
+  width: 50%;
+  height: 60%;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-size: 25px;
+  margin: 8px auto;
 }
 
-#data {
-    max-width: 400px;
-    height: 18px;
-    font-size: 15px;
-    border: #000 1.5px solid;
+.inputsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px auto;
 }
 
-#btn {
-    max-width: 200px;
-    height: 28px;
-    font-size: 15px;
-    color: #000;
-    background-color: #FFF;
+.txtInput {
+  width: 30%;
+  height: 20%;
+  font-size: 16px;
+  border: #000 1.5px solid;
+}
+
+.btnInput {
+  height: 28px;
+  font-size: 15px;
+  color: #000;
+  background-color: #fff;
+}
+.answerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+}
+
+.answerContainer > p {
+  text-align: center;
 }
 
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 250px;
-    margin: auto;
-    max-width: 250px;
-    height: 30px;
-    border: 1.6px solid black;
-    border-radius: 20px;
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
-button {
-    transition: 0.5s;
-    width: 80px;
-    height: 25px;
-    background-color: #000;
-    border-radius: 20px;
-    margin: 0px 10px;
-    align-self: center;
+.author {
+  font-size: 24px;
+  font-family: Arial;
+}
+
+.mediaButtonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 8px auto;
+}
+
+.footerButtons {
+  transition: 0.5s;
+  width: 10%;
+  height: 25px;
+  background-color: #000;
+  border-radius: 20px;
+  margin: 0px 10px;
+  align-self: center;
 }
 
 .mediaButtons {
-    transition: 0.5s;
-    font-size: 12px;
-    text-decoration: none;
-    color: #FFF;
+  transition: 0.5s;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial;
 }
-
-.secondContainer {
-    position: relative;
-    top: 245px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.text1 {
-    transition: 0.5s;
-
-    font-size: 14px;
-    color: #808080;
-}
-
-.text2 {
-    transition: 0.5s;
-    font-size: 14px;
-    color: #708090;
-}
-
-
-/* CSS Effects */ 
 
 .container:hover {
-    transition: 0.5s;
-    box-shadow: #000 4px 2px;
-    text-align: center;
-    margin: auto;
-    background-color: #9370DB;
-    max-width: 65%;
-    height: 180px;
-    border: 1.8px solid #000;
+  transition: 0.5s;
+  box-shadow: #000 4px 2px;
+  text-align: center;
+  background-color: #9370db;
 }
 
-
-#data:focus {
-    outline: none;
-    max-width: 400px;
-    height: 18px;
-    font-size: 15px;
-    border: 1.7px solid black;
-    
-}
-
-#btn:focus {
-    border: 1px solid #000;
-    outline: none;
-    max-width: 200px;
-    height: 28px;
-    font-size: 15px;
-    color: #000;
-    background-color: #FFF;
-}
-
-button:hover {
-    transition: 0.5s;
-    width: 80px;
-    height: 30px;
-    background-color: #FFF;
-    border-radius: 20px;
-
-}
-
-.mediaButtons:hover {
-    transition: 0.5s;
-    font-size: 12px;
-
-    text-decoration: none;
-    color: #000;
-}
-
-.text1:hover {
-    transition: 0.5s;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #808080;
-}
-
-.text2:hover {
-    transition: 0.5s;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #708090;
+.txtInput:focus {
+  outline: none;
+  font-size: 16px;
 }
