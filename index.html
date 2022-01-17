@@ -2,7 +2,6 @@
 <html lang="pt-br">
   <head>
     <link rel="stylesheet" href="./style.css" />
-    <script src="script.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enigmatic</title>
@@ -12,25 +11,21 @@
       <header>
         <div class="title">Welcome to Enigmatic!</div>
       </header>
+      <p class="questionParagraph" id="question">Questions...</p>
       <div class="inputsContainer">
         <input
           class="txtInput"
           type="text"
-          id="data"
-          required="true"
+          id="txtInput"
           placeholder="Type your answer..."
         />
-        <input
-          class="btnInput"
-          type="submit"
-          onclick="show()"
-          id="btn"
-          value="Check"
-        />
+        <button class="btnSubmit" type="submit" id="btnSubmit">Check</button>
       </div>
 
-      <div class="answerContainer" id="position"></div>
-      <p id="answer"></p>
+      <div class="answerContainer">
+        <p id="answer">Answers...</p>
+        <p id="successMessage"></p>
+      </div>
     </div>
     <footer>
       <p class="author">Powered By: Leonardo Ferreira - 2022</p>
@@ -63,4 +58,5 @@
       </div>
     </footer>
   </body>
+  <script defer src="script.js"></script>
 </html>
