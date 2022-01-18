@@ -1,55 +1,84 @@
+let answers = ["Meat", "Key", "Jumper", "Face"];
 let questions = [
-    'Sou o pais com o rio mais poluido do mundo',
-    'Sou o pais onde nasceu o samba',
-    'A mente mais brilhante do seculo XX',
-    'Um jogo onde quem construir e atirar mais ganha',
-    'Sou uma personagem de LOL cujo nome se assemelha a lua',
-]
+  "What the favourite food of the dog?",
+  "What the name of the object to open many doors?",
+];
 
+const successMessages = [
+  "You nailed it, right question!",
+  "All right, correct answer!",
+  "Do you have superpowah? Good job!",
+  "Very good! Keep going!",
+];
 
-let stages = [
-    "India",
-    "Brasil",
-    "Albert Einstein",
-    "Fortnite",
-    "Diana",
-]
+const DEFAULT_WRONG_PHRASE = "Wrong answer :(";
+const DEFAULT_NO_INPUT_DATA_PHRASE = "Please enter with some answer.";
 
-function show() {
-    let question = document.querySelector('#question')
+class Enigmatic {
+  #questionParagraph = this.QueryFactory("#question");
+  #answerParagraph = this.QueryFactory("#answer");
+  #txtInput = this.QueryFactory("#txtInput");
+  #statusMessage = this.QueryFactory("#successMessage");
+  #btnSubmit = this.QueryFactory("#btnSubmit");
 
-    
+  constructor() {
+    this.main();
+  }
 
-    let answer = document.querySelector('#answer');
-    let sa = document.querySelector('#position');
-    let capture = '';
+  main() {
+    this.showTextsInHTML();
+    // this.showQuestions();
+  }
 
-    capture = document.querySelector('#data').value
+  QueryFactory(element) {
+    return document.querySelector(element);
+  }
 
-    //verificar se a primeira resposta é correta e assim
-    //passar para a proxima resposta, sucetivamente.
+  showQuestions() {
+    for (let index = 0; index < questions.length; index++) {
+      this.#questionParagraph.innerHTML = questions[index];
+    }
+  }
 
-    for (let i = 0; i < stages.length; i++) {
-        if (capture === stages[i]) {
-            answer.innerHTML = 'Certa resposta'
-            capture == stages[i++]
-            sa.innerHTML = stages[i]
-        }
+  randomizeSuccessMessages() {
+    const randomizer = Math.floor(Math.random() * successMessages.length);
+    return successMessages[randomizer];
+  }
 
+  checkIfHaveInputs(event) {
+    event.preventDefault();
+
+    if (!this.#txtInput.value) {
+      return (this.#answerParagraph.innerHTML = DEFAULT_NO_INPUT_PHRASE);
+    }
+  }
+
+  submitAnswer(event) {
+    event.preventDefault();
+
+    const cloneAnswers = [...answers];
+
+    for (let index = 0; index < cloneAnswers.length; index++) {
+      if (this.#txtInput.value === cloneAnswers[index]) {
+        console.log(cloneAnswers);
+        const unstackArray = answers.shift();
+        console.log(unstackArray);
+        return (this.#statusMessage.innerHTML =
+          this.randomizeSuccessMessages());
+      } else {
+        return (this.#statusMessage.innerHTML = DEFAULT_WRONG_PHRASE);
+      }
     }
 
-    
+    return checkAnswer;
+  }
 
-    //Mostrar uma nova pergunta conforme as respostas forem validadas
-
-    for (let j = 0; j < questions.length; j++) {
-    }
-
-
-    //verificar se ha um campo em branco no input
-    if (capture.length === null ||
-        capture.length === undefined ||
-        capture === '') {
-        alert("Digite uma resposta valida, por favor")
-    }
+  showTextsInHTML() {
+    this.#btnSubmit.addEventListener("click", (event) => {
+      this.submitAnswer(event);
+      this.checkIfHaveInputs(event);
+    });
+  }
 }
+
+const game = new Enigmatic();
