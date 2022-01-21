@@ -4,7 +4,10 @@
 
 #
 
-> ### Note: This is a personal project, if you want to contribute, make a pull request and describe your new feature idea, I often check PR's.
+> ### IMPORTANT 💡: Refactoring this project using the **SOLID concept** to improve the good practices.
+#
+
+> ### Note 📝: This is a personal project, if you want to contribute, make a pull request and describe your new feature idea, I often check PR's.
 #
 ## Social medias: 
 
