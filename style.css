@@ -49,9 +49,10 @@ header {
 
 .txtInput {
   width: 30%;
-  height: 20%;
+  height: 32px;
   font-size: 16px;
   border-radius: 8px;
+  padding-left: 4px;
   border: #000 1.5px solid;
 }
 .btnSubmit {
@@ -65,14 +66,10 @@ header {
 .answerContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 16px;
   margin: 8px auto;
-}
-
-.answerContainer > p {
-  font-size: 24px;
-  text-align: center;
 }
 
 footer {
@@ -125,5 +122,15 @@ footer {
 
 .txtInput:focus {
   outline: none;
+}
+.txtInput::placeholder {
   font-size: 16px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.answerContainer > p {
+  font-size: 24px;
+  text-align: center;
 }
