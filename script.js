@@ -61,7 +61,8 @@ class Enigmatic {
     this.#setStatusMessageParagraph(DEFAULT_WRONG_PHRASE);
   }
 
-  #isWordMatches = () => this.#answers.hasOwnProperty(this.#txtInput);
+  #isWordMatches = () =>
+    Object.freeze(this.#answers.hasOwnProperty(this.#txtInput));
 
   #isAnsweredWithWord = () =>
     this.#isWordMatches() && this.#answers[this.#txtInput];
