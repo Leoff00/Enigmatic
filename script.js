@@ -1,6 +1,15 @@
-let questions = [
-  "What the favourite food of the dog?",
-  "What the name of the object to open many doors?",
+const questionsMessages = [
+  {
+    question: "What the name of the object to open many doors?",
+  },
+
+  {
+    question: "What is the name of the best teleport movie?",
+  },
+
+  {
+    question: "What is the name of the monster that has 3 heads",
+  },
 ];
 
 let successMessages = [
@@ -10,10 +19,13 @@ let successMessages = [
   "Very good! Keep going!",
 ];
 
+const DEFAULT_INITIAL_QUESTION = "What the favourite food of the dog?";
 const DEFAULT_WRONG_PHRASE = "Wrong answer :(";
 const DEFAULT_NO_INPUT_DATA_PHRASE = "Please enter with some answer.";
 const DEFAULT_WORD_ALREADY_ANSWERED = "You already answered this.";
 const DEFAULT_SCORE_PHRASE = "Your Score: ";
+const DEFAULT_END_GAME_PHRASE = "You answer all the words. Congrats!!!";
+const END_GAME_CONDITION_NUMBER = 5;
 
 class Enigmatic {
   #questionParagraph = this.QueryFactory("#question");
@@ -37,26 +49,59 @@ class Enigmatic {
     return document.querySelector(element);
   }
 
+  #unstackQuestionMessages() {
+    console.log(questionsMessages);
+    console.log("popping and unstack");
+    questionsMessages.shift();
+  }
+
   #randomizeSuccessMessages() {
     const randomizer = Math.floor(Math.random() * successMessages.length);
     return successMessages[randomizer];
   }
 
-  submitAnswer() {
+  #setEndGame() {
+    if (this.#counter === END_GAME_CONDITION_NUMBER) {
+      this.#setQuestionsParagraph(DEFAULT_END_GAME_PHRASE);
+      return;
+    }
+  }
+
+  #iterateOverQuestions() {
+    return questionsMessages.map((items, index) => {
+      this.#setQuestionsParagraph(items.question);
+      this.#unstackQuestionMessages();
+    });
+  }
+
+  #incrementCounter() {
+    return this.#counter++;
+  }
+
+  #validateCorrectAnswer() {
+    this.#setWordAnswered(this.#txtInput);
+    this.#setStatusMessage();
+    this.#iterateOverQuestions();
+    this.#setScoreCounterMessage(
+      DEFAULT_SCORE_PHRASE,
+      this.#incrementCounter(),
+    );
+
+    this.#setEndGame();
+  }
+
+  submitAnswers() {
     if (!this.#hasWords())
       return this.#setStatusMessageParagraph(DEFAULT_NO_INPUT_DATA_PHRASE);
 
     if (this.#isWordMatches() && !this.#isAnsweredWithWord()) {
-      this.#setWordAnswered(this.#txtInput);
-      this.#setStatusMessage();
-      this.#setScoreCounter(DEFAULT_SCORE_PHRASE, this.#counter++);
+      this.#validateCorrectAnswer();
       return;
     }
 
-    if (this.#isAnsweredWithWord())
-      return this.#setStatusMessageParagraph(
-        `${DEFAULT_WORD_ALREADY_ANSWERED}`,
-      );
+    if (this.#isAnsweredWithWord()) {
+      return this.#setStatusMessageParagraph(DEFAULT_WORD_ALREADY_ANSWERED);
+    }
 
     this.#setStatusMessageParagraph(DEFAULT_WRONG_PHRASE);
   }
@@ -72,12 +117,16 @@ class Enigmatic {
     this.#statusMessage.innerHTML = randomizeStatusMessage;
   };
 
-  #setScoreCounter = (scorePhrase, score) =>
-    (this.#answerParagraph.innerHTML = `${scorePhrase} ${score}`);
+  #setScoreCounterMessage = (scorePhrase, score) =>
+    (this.#answerParagraph.innerHTML = `${scorePhrase} ${parseInt(score)}`);
 
   #setWordAnswered = (key) => (this.#answers[key] = true);
 
-  #setStatusMessageParagraph = (text) => (this.#statusMessage.innerHTML = text);
+  #setStatusMessageParagraph = (statusParagraph) =>
+    (this.#statusMessage.innerHTML = statusParagraph);
+
+  #setQuestionsParagraph = (questionPhrase) =>
+    (this.#questionParagraph.innerHTML = questionPhrase);
 
   #setTxtInputValue = () =>
     (this.#txtInput = this.QueryFactory("#txtInput").value.toLowerCase());
@@ -88,7 +137,7 @@ class Enigmatic {
     if (event) event.preventDefault();
 
     this.#setTxtInputValue();
-    this.submitAnswer();
+    this.submitAnswers();
   }
 
   showTextsInHTML() {
