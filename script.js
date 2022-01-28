@@ -49,6 +49,12 @@ class Enigmatic {
     return document.querySelector(element);
   }
 
+  #setUpQuestions(questionsObject) {
+    for (let question of questionsObject) {
+      this.#setQuestionsParagraph(question.question);
+    }
+  }
+
   #unstackQuestionMessages() {
     console.log(questionsMessages);
     console.log("popping and unstack");
@@ -67,13 +73,6 @@ class Enigmatic {
     }
   }
 
-  #iterateOverQuestions() {
-    return questionsMessages.map((items, index) => {
-      this.#setQuestionsParagraph(items.question);
-      this.#unstackQuestionMessages();
-    });
-  }
-
   #incrementCounter() {
     return this.#counter++;
   }
@@ -81,7 +80,8 @@ class Enigmatic {
   #validateCorrectAnswer() {
     this.#setWordAnswered(this.#txtInput);
     this.#setStatusMessage();
-    this.#iterateOverQuestions();
+    this.#setUpQuestions(questionsMessages);
+    this.#unstackQuestionMessages();
     this.#setScoreCounterMessage(
       DEFAULT_SCORE_PHRASE,
       this.#incrementCounter(),
